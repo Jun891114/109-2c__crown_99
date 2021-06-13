@@ -15,6 +15,7 @@ var booksRouter = require('./routes/books');
 var materialRouter = require('./routes/material');
 var attendanceRouter = require('./routes/attendance');
 
+const apiMaterialRouter = require('./routes/apiMaterial');
 var app = express();
 
 // view engine setup
@@ -32,6 +33,8 @@ app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/material',materialRouter);
 app.use('/attendance',attendanceRouter);
+app.use('apiMaterial',apiMaterialRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
