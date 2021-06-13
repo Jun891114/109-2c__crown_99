@@ -7,7 +7,7 @@ router.get('/', async function (req, res, next) {
   try {
     const response = await  fetch('http://localhost:1337/material');
     const data = await response.json();
-    console.log('data' , data);
+    // console.log('data' , data);
     res.render('apiMaterial/index', { data });
   } catch (err) {
     console.log('Errors on getting material !');
@@ -105,10 +105,14 @@ router.get('/delete/:id', async function (req, res, next) {
     const response = await  fetch(`http://localhost:1337/material/${id}`,{
       method: 'delete',
     });
+    const data = await response.json();
+
+  res.redirect('/apiMaterial');
   } catch (err) {
     console.log(err);
   }
-  res.redirect('/apiMaterial');
+  res.redirect('/material');
+
 });
 
 module.exports = router;
